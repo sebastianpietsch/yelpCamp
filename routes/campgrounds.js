@@ -31,7 +31,6 @@ router.post("/", middleware.isLoggedIn, function(req, res){
          console.log(err);
       } else {
          //redirect back to camgrounds page
-         console.log(newlyCreated);
          res.redirect("/campgrounds");
       }
    });
