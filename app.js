@@ -13,6 +13,7 @@ var express        = require("express"),
 var commentRoutes    = require("./routes/comments");
 var campgroundRoutes = require("./routes/campgrounds");
 var indexRoutes      = require("./routes/index");
+var userRoutes       = require("./routes/users");
 
 var dbURL = process.env.DATABASEURL || "mongodb://localhost:27017/yelp_camp";
 //connect to DB
@@ -50,6 +51,7 @@ app.use(function(req, res, next){
 app.use(indexRoutes);
 app.use("/campgrounds", campgroundRoutes);
 app.use("/campgrounds/:id/comments", commentRoutes);
+app.use("/users", userRoutes);
 
 app.listen(process.env.PORT, process.env.IP, function(){
    console.log("The YelpCamp server has started!"); 
