@@ -8,12 +8,15 @@
             <% } else { %>
                 <h1><%= user.username %></h1>
             <% } %>
-           <div class="thumbnail">
-              <img src="<%= user.avatar %>" alt="user profile image">
-              <div class="caption">
-                  <a href="mailto:<%=user.email%>"><%=user.email%></a>
-              </div>
-           </div>
+            <div class="thumbnail">
+                <img src="<%= user.avatar %>" alt="user profile image">
+                <div class="caption">
+                    <a href="mailto:<%=user.email%>"><%=user.email%></a>
+                </div>
+            </div>
+            <% if(currentUser && user._id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
+                <a href="/users/<%= user._id %>/edit" class="btn btn-xs btn-warning">Edit Profile</a>
+            <% } %> 
        </div>
        <div class="col-md-8 text-right">
            <h3><%= user.username %>'s Campgrounds:</h3>
