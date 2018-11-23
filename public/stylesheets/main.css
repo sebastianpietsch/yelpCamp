@@ -13,3 +13,7 @@
 .delete-form {
     display: inline;
 }
+
+.user-camp-list {
+    list-style: none;
+}
