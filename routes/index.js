@@ -3,6 +3,9 @@ var router   = express.Router();
 var passport = require("passport");
 var User     = require("../models/user");
 var Campground = require("../models/campground");
+var async      = require("async");
+var nodemailer = require("nodemailer");
+var crypto     = require("crypto");
 
 //root route
 router.get("/", function(req, res){
@@ -37,12 +40,10 @@ router.post("/register", function(req, res){
       });
    });
 });
-
 //show login form
 router.get("/login", function(req, res){
    res.render("login");
 });
-
 //handling login logic
 router.post("/login", passport.authenticate("local", 
     {
@@ -50,12 +51,19 @@ router.post("/login", passport.authenticate("local",
         failureRedirect: "/login"
     }), function(req, res){
 });
-
 //logout route
 router.get("/logout", function(req, res){
    req.logout();
    req.flash("success", "Logged you out!");
    res.redirect("/campgrounds");
+});
+
+router.get("/forgot", function(req, res){
+   res.render("forgot");
+});
+
+router.post("/forgot", function(req, res){
+   
 });
 
 module.exports = router;
